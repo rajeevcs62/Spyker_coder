@@ -1,27 +1,29 @@
-import './App.css';
-
+//import './App.css';
+import NavigationBar from './components/NavigationBar';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Routes,Route,BrowserRouter } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './components/Home';
+import Blogs from './components/Blogs';
+import Contact from './components/Contact';
+import NoPage from './components/NoPage';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      <div className="wrapper">
+        
+        <BrowserRouter>
+        <NavigationBar></NavigationBar>
+      <Routes>
+        <Route path="/" exact element={<Layout />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/*" element={<NoPage />} />
+        
+      </Routes>
+    </BrowserRouter>
+    </div>
     </div>
   );
 }
